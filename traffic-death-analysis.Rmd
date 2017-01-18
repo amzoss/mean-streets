@@ -1,7 +1,7 @@
 ---
 title: "Analyzing the NYC Traffic Death Data"
 author: "Angela Zoss"
-date: "January 16, 2017"
+date: "January 18, 2017"
 output: github_document
 ---
 
@@ -71,6 +71,18 @@ df.fulldate <- subset(df.traffic, !is.na(timestamp))
 ### Accidents over time
 
 ```{r accidents_by_month}
+
+# In this plot, we want to summarize the data by month. The bar chart
+# will count the number of accidents in each month; we just have to
+# tell it how to find the month in the data.  It's easy to pull parts 
+# of the timestamp out using lubridate functions like month(). 
+# Type ?lubridate for information.
+
+ggplot(df.fulldate, aes(x=month(timestamp, label=TRUE))) + geom_bar()
+
+```
+
+```{r accidents_by_month_2}
 
 # In this plot, we want to summarize the data by month. The bar chart
 # will count the number of accidents in each month; we just have to
